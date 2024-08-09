@@ -10,10 +10,11 @@ import Features from "../pages/productsLayout/Features";
 
 const router = createBrowserRouter(createRoutesFromElements(
     <>
-    <Route path="/" element={<RootLayout/>}/>
+    <Route path="/" element={<RootLayout/>}>
     <Route index element={<Home />} />
     <Route path="price" element={<Price />} />
     <Route path="features" element={<Features />} />
+    </Route>
     </>
 ));
 
