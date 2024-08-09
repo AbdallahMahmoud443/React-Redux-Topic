@@ -10,6 +10,5 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}> {/** Provider is design Pattern */}
       <App />
     </Provider>
- 
   </StrictMode>,
 )

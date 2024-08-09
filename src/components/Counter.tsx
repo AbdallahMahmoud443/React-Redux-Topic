@@ -15,9 +15,9 @@ const Counter = () => {
       <div className="w-full h-screen p-2 flex flex-col items-center justify-center space-y-4">
         <h3 className="text-4xl font-semibold">Counter: {counterValue}</h3>
         <div className="flex flex-row space-x-3">
-        <Button className="w-fit bg-purple-700" onClick={()=> dispatch(increment())}>{textValue}</Button>
-        <Button className="w-fit bg-purple-700" onClick={()=> dispatch(decrement())}>Decrease Counter</Button>
-        <Button className="w-fit bg-purple-700" onClick={()=> dispatch(incrementByAmount(5))}>Increase Counter By 5</Button>
+        <Button className="w-fit" onClick={()=> dispatch(increment())}>{textValue}</Button>
+        <Button className="w-fit" onClick={()=> dispatch(decrement())}>Decrease Counter</Button>
+        <Button className="w-fit" onClick={()=> dispatch(incrementByAmount(5))}>Increase Counter By 5</Button>
         </div>
        
       </div>
