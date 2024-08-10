@@ -6,7 +6,7 @@ const Home = () => {
   const { isPending, error, data } = useCustomHook({
     //** todoList-id any chnage in queryKey (useQuery Will Fetch Data Again) unique Keys*/
     queryKey: [`Products`],
-    url: `/products/?categoryId=2`, // Pagination
+    url: `/products?limit=5`, 
   });
 
   // return Skeleton while fetching data
@@ -33,16 +33,16 @@ const Home = () => {
             id,
             title,
             price,
-            images,
+            image,
           }: {
             id: number;
             title: string;
             price: number;
-            images: string[];
+            image: string;
           }) => {
             return (
               <div key={id}>
-                <ProductCard title={title} price={price} image={images[0]}/>
+                <ProductCard title={title} price={price} image={image}/>
               </div>
             );
           }

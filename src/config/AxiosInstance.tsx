@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: 'https://api.escuelajs.co/api/v1',
+    baseURL: 'https://fakestoreapi.com',
     timeout: 1000,
   });
 
