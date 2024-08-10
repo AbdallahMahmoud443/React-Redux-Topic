@@ -1,11 +1,18 @@
+import { addItemToCart } from "../app/features/cart/CartSlice";
+import { useAppDispatch } from "../app/hooks";
+import Button from "./UI/Button";
+
 interface IProps {
+  id:number
   title:string,
   price:number,
   image:string,
+  qty:number
 }
 
-const ProductCard = ({title,price,image}: IProps) => {
-  console.log(image)
+const ProductCard = ({id,title,price,image,qty}: IProps) => {
+  const dispath = useAppDispatch()
+
   return (
     <div className="relative m-2 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md ">
       <a
@@ -83,10 +90,7 @@ const ProductCard = ({title,price,image}: IProps) => {
             </span>
           </div>
         </div>
-        <a
-          href="#"
-          className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-        >
+        <Button fullWidth onClick={() => dispath(addItemToCart({id,title,price,image,qty}))}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="mr-2 h-6 w-6"
@@ -102,7 +106,7 @@ const ProductCard = ({title,price,image}: IProps) => {
             />
           </svg>
           Add to cart
-        </a>
+        </Button>
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ const Home = () => {
           }) => {
             return (
               <div key={id}>
-                <ProductCard title={title} price={price} image={image}/>
+                <ProductCard id={id} title={title} price={price} image={image} qty={1}/>
               </div>
             );
           }

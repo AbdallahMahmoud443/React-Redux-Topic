@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterSlice from './features/counter/counterSlice'
+import CartSlice from './features/cart/CartSlice'
 
 
 export const store = configureStore({
   reducer: {
-    counter:counterSlice
+    counter:counterSlice,
+    cart:CartSlice
   } // ** this is => RootState
 })
 
