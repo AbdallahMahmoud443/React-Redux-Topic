@@ -21,7 +21,7 @@ const Home = () => {
       </p>
     );
   }
-  console.log(data);
+  // console.log(data);
   // setpage count
 
   return (

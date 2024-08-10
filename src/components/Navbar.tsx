@@ -1,8 +1,12 @@
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../app/hooks";
 
 interface IProps {}
 
 const Navbar = ({}: IProps) => {
+    // this component use  useAppSelector hook to get data from store and it must rerender this component
+    const products = useAppSelector(state =>state.cart.cartItems)
+    // console.log(products)
   return (
     <header className="shadow mb-2 bg-white">
       <div className="relative flex max-w-screen-xl flex-col overflow-hidden px-4 py-4 md:mx-auto md:flex-row md:items-center">
@@ -71,7 +75,7 @@ const Navbar = ({}: IProps) => {
             </li>
             <li className="rounded-full md:mr-12  text-md space-x-1 bg-blue-700 px-4 py-1 text-white cursor-pointer">
               <span>Cart</span>
-              <span>(1)</span>
+              <span>({products.length})</span>
             </li>
             <li className="text-white-600 md:mr-12 hover:text-blue-600">
               <button className="rounded-md border-2 border-blue-600 px-6 py-1 font-medium text-blue-600 transition-colors hover:bg-blue-600 hover:text-white">
