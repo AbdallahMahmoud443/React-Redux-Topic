@@ -1,18 +1,52 @@
 import ProductCard from "../../components/ProductCard";
+import useCustomHook from "../../hooks/CustomHook";
 
-interface IProps {}
+const Home = () => {
+  //* Fetch Data using useQuery() hook
+  const { isPending, error, data } = useCustomHook({
+    //** todoList-id any chnage in queryKey (useQuery Will Fetch Data Again) unique Keys*/
+    queryKey: [`Products`],
+    url: `/products/?categoryId=2`, // Pagination
+  });
 
-const Home = ({}: IProps) => {
+  // return Skeleton while fetching data
+  if (isPending) {
+    return <div className="space-y-2">Data Loading 📣</div>;
+  }
+  // Print error
+  if (error) {
+    return (
+      <p className="w-full font-semibold">
+        Error in fetching data😌{error.message}
+      </p>
+    );
+  }
+  console.log(data);
+  // setpage count
+
   return (
     <section className="flex flex-col items-center mt-20">
       <h1 className="mt-10 text-4xl font-bold text-blue-700">New Products</h1>
       <div className="mt-10 grid max-w-md grid-cols-1 gap-6 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-4 lg:gap-6">
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
+        {data.data.map(
+          ({
+            id,
+            title,
+            price,
+            images,
+          }: {
+            id: number;
+            title: string;
+            price: number;
+            images: string[];
+          }) => {
+            return (
+              <div key={id}>
+                <ProductCard title={title} price={price} image={images[0]}/>
+              </div>
+            );
+          }
+        )}
       </div>
     </section>
   );

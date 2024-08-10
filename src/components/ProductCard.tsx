@@ -1,15 +1,20 @@
-interface IProps {}
+interface IProps {
+  title:string,
+  price:number,
+  image:string,
+}
 
-const ProductCard = ({}: IProps) => {
+const ProductCard = ({title,price,image}: IProps) => {
+  console.log(image)
   return (
-    <div className="relative m-2 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+    <div className="relative m-2 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md ">
       <a
-        className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
+        className="relative mx-3 mt-3 flex h-50"
         href="#"
       >
         <img
           className="object-cover"
-          src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          src={image}
           alt="product image"
         />
         <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
@@ -19,18 +24,18 @@ const ProductCard = ({}: IProps) => {
       <div className="mt-4 px-5 pb-5">
         <a href="#">
           <h5 className="text-xl tracking-tight text-slate-900">
-            Nike Air MX Super 2500 - Red
+            {title.slice(0,25)+'..'}
           </h5>
         </a>
         <div className="mt-2 mb-5 flex items-center justify-between">
           <p>
-            <span className="text-3xl font-bold text-slate-900">$449</span>
+            <span className="text-3xl font-bold text-slate-900">${price}</span>
             <span className="text-sm text-slate-900 line-through">$699</span>
           </p>
           <div className="flex items-center">
             <svg
               aria-hidden="true"
-              className="h-5 w-5 text-yellow-300"
+              className="h-5 w-5 text-yellow-400"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +44,7 @@ const ProductCard = ({}: IProps) => {
             </svg>
             <svg
               aria-hidden="true"
-              className="h-5 w-5 text-yellow-300"
+              className="h-5 w-5 text-yellow-400"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -88,11 +93,11 @@ const ProductCard = ({}: IProps) => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="2"
+            strokeWidth="2"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+    
+              strokeLinecap="round"
               d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
             />
           </svg>

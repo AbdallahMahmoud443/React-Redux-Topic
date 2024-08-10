@@ -3,7 +3,7 @@ interface IProps {}
 const Price = ({}: IProps) => {
   return (
     <div className="w-full h-screen p-2 flex flex-col items-center justify-center">
-      <h3 className="text-6xl">Price</h3>
+      <h3 className="text-6xl text-blue-700">Price</h3>
     </div>
   );
 };
