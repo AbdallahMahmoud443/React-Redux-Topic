@@ -4,7 +4,7 @@ import { useAppSelector } from "../app/hooks";
 interface IProps {}
 
 const Navbar = ({}: IProps) => {
-    // this component use  useAppSelector hook to get data from store and it must rerender this component
+    // this component use  useAppSelector hook to get data from store and it must rerender this component and 
     const products = useAppSelector(state =>state.cart.cartItems)
     // console.log(products)
   return (
