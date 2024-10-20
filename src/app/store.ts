@@ -1,15 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterSlice from './features/counter/counterSlice'
 import CartSlice from './features/cart/CartSlice'
-import ProductsSlice from './features/Products/ProductsSlice'
-
+//import ProductsSlice from './features/Products/ProductsSlice'
+import {apiProductSlice} from './features/Products/ProductsSlice'
 
 export const store = configureStore({
   reducer: {
     counter:counterSlice,
     cart:CartSlice,
-    products:ProductsSlice,
-  } // ** this is => RootState
+    // important: add [apiProductSlice.reducerPath] is dunamic key: apiProductSlice.reducer
+    [apiProductSlice.reducerPath]:apiProductSlice.reducer 
+    // products:ProductsSlice,
+    
+  }, // ** this is => RootState
+  middleware:getDefaultMiddleware => getDefaultMiddleware({
+    serializableCheck:false}).concat([apiProductSlice.middleware]),
+  
 })
 
 // Get the type of our store variable

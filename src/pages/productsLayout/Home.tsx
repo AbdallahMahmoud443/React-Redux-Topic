@@ -1,18 +1,21 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+// import { useEffect } from "react";
+// import { useAppDispatch, useAppSelector } from "../../app/hooks";
+// import useCustomHook from "../../hooks/CustomHook";
+// import { getProductsList } from "../../app/features/Products/ProductsSlice";
+
+import { ReactNode } from "react";
+import { useGetProductListQuery } from "../../app/features/Products/ProductsSlice";
 import ProductCard from "../../components/ProductCard";
-import useCustomHook from "../../hooks/CustomHook";
-import { getProductsList } from "../../app/features/Products/ProductsSlice";
 
 const Home = () => {
-  // //* Fetch Data using useQuery() hook
+  // Note:   Fetch Data using useQuery() hook
   // const { isPending, error, data } = useCustomHook({
   //   //** todoList-id any chnage in queryKey (useQuery Will Fetch Data Again) unique Keys*/
   //   queryKey: [`Products`],
   //   url: `/products?limit=5`,
   // });
 
-  // // return Skeleton while fetching data
+  // // Note: return Skeleton while fetching data
   // if (isPending) {
   //   return <div className="space-y-2">Data Loading 📣</div>;
   // }
@@ -27,7 +30,8 @@ const Home = () => {
   // // console.log(data);
   // // setpage count
 
-  //! To Execute getProductsList Function When Mount Component using (useEffect)
+  // Note: To Execute getProductsList Function When Mount Component using (useEffect)
+  /*
   const dispath = useAppDispatch();
   useEffect(() => {
     dispath(getProductsList());
@@ -43,7 +47,22 @@ const Home = () => {
          </p>
        );
     }
+*/
 
+// Note: add redux RTK 
+const {data,isLoading,error,isError} = useGetProductListQuery([]);
+console.log(data)
+if (isLoading) {
+  return <div className="space-y-2">Data Loading 📣</div>;
+}
+if (isError) {
+     return (
+       <p className="w-full font-semibold">
+         {error as ReactNode}
+       </p>
+     );
+  }
+  console.log(data);
   return (
     <section className="flex flex-col items-center mt-20">
       <h1 className="mt-10 text-4xl font-bold text-blue-700">New Products</h1>
